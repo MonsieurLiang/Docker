@@ -16,7 +16,7 @@ RUN zypper -n in mariadb
 
 RUN zypper groupadd mysql && useradd -g mysql mysql
 
-ADD start.sh /etc/init.d/start.sh
+ADD ./start.sh /etc/init.d/start.sh
 
 RUN chmod 744 /etc/init.d/start.sh
 
