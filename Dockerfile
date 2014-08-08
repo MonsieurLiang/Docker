@@ -14,8 +14,10 @@ RUN zypper -n in php5 apache2-mod_php5 php5-pgsql php5-mysql
 
 RUN zypper -n in mariadb
 
-RUN groupadd mysql; useradd -g mysql mysql
+RUN groupadd mysql
 
+RUN useradd -g mysql mysql
+ 
 ADD ./start.sh /etc/init.d/start.sh
 
 RUN chmod 744 /etc/init.d/start.sh
