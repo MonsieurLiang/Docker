@@ -12,15 +12,9 @@ RUN zypper -n in unzip
 
 ADD /Joomla_3.3.3-Stable-Full_Package.zip /srv/www/htdocs/
 
-RUN unzip /srv/www/htdocs/Joomla_3.3.3-Stable-Full_Package.zip
+ADD /start.sh /root/
 
-CMD ["/etc/init.d/apache2", "start"]
+RUN chmod 744 /root/start.sh
 
+CMD ["/root/start.sh"]
 
-FROM main/opensuse
-
-RUN zypper --gpg-auto-import-keys -n refresh
-
-RUN zypper -n in mariadb
-
-CMD ["/etc/init.d/mysql", "start"]

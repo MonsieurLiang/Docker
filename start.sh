@@ -1,11 +1,5 @@
 #!/bin/bash
 
-groupadd mysql
-
-useradd -g mysql mysql
+unzip /srv/www/htdocs/Joomla_3.3.3-Stable-Full_Package.zip
 
 /etc/init.d/apache2 start
-
-/etc/init.d/mysql start
-
-/bin/bash -c $@
