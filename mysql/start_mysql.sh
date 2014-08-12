@@ -1,5 +1,5 @@
 #!/bin/sh
 
-/etc/init.d/mysql start
+rcmysql start
 
 bash
