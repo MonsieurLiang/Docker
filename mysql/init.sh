@@ -3,10 +3,10 @@
 echo "start mysql"
 /etc/init.d/mysql start
 
-echo "start change mysqladmin password"
+echo "change mysqladmin password"
 /usr/bin/mysqladmin -u root password '123456'
 
-echo "start statement"
+echo "execute statement"
 mysql --user=root --password=123456 --execute="CREATE USER joomla; CREATE DATABASE joomla;"
 
 mysql --user=root --password=123456 --execute="GRANT ALL ON joomla.* TO joomla;"

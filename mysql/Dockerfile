@@ -27,4 +27,4 @@ RUN chmod 755 /root/init.sh
 RUN /root/init.sh
 
 # set the default command
-CMD ["/usr/sbin/rcmysql start; bash"]
+CMD ["/bin/bash","-c","/usr/sbin/rcmysql start; bash"]

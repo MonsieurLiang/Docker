@@ -14,8 +14,8 @@ RUN zypper -n in apache2
 # install php5 apache2-mod_php5 php5-pgsql php5-mysql php5-zlib
 # apache2-mod_php5: for "LoadModule mod_php5" in apache configuration
 #       php5-pgsql: for working with PostgreSQL
-#       php5-mysql: for working with mysql
-#        php5-zlib: for joomla
+#       php5-mysql: for working with MySQL
+#        php5-zlib: for Joomla
 RUN zypper -n in php5 apache2-mod_php5 php5-pgsql php5-mysql php5-zlib
 
 # install unzip
@@ -31,6 +31,6 @@ RUN unzip /srv/www/htdocs/Joomla_3.3.3-Stable-Full_Package.zip -d /srv/www/htdoc
 RUN chown -R wwwrun:www /srv/www/htdocs/
 
 # set the default command
-CMD ["/etc/init.d/apache2 start; bash"]
+CMD ["/bin/bash","-c","/etc/init.d/apache2 start; bash"]
 
 
