@@ -16,7 +16,9 @@ RUN zypper -n install rcc-runtime
 
 # add initialization file to the container
 # this file can do some jobs like create a new database, a new user in mariadb, change the configuration, etc
-ADD init.sh /root/
+# the position of init.sh is the same level with this Dockerfile
+# init.sh will be copied into the image /root/init.sh
+ADD ./init.sh /root/
 
 # change the initialization file to executable
 RUN chmod 755 /root/init.sh
