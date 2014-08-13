@@ -1,23 +1,28 @@
 # DOCKERFILE
 
+# basic image openSUSE 13.1, we use this repository here main/opensuse
 FROM main/opensuse
 
+# refresh repository 
+# --gpg-auto-import-keysl : if new repository signing key is found, trust and import it automatically
+#                      -n : --non-interactive 
 RUN zypper --gpg-auto-import-keys -n refresh
 
-RUN zypper -n in mariadb
+# install mariadb
+RUN zypper -n install mariadb
 
-RUN zypper -n in rcc-runtime
+# install rcc-runtime
+RUN zypper -n install rcc-runtime
 
-ADD init_mysql.sh /root/
+# add initialization file to the container
+# this file can do some jobs like create a new database, a new user in mariadb, change the configuration, etc
+ADD init.sh /root/
 
-RUN chmod 744 /root/init_mysql.sh
+# change the initialization file to executable
+RUN chmod 755 /root/init.sh
 
-RUN /root/init_mysql.sh
+# execute the initialization file
+RUN /root/init.sh
 
-#ADD start_mysql.sh /root/
-
-#RUN chmod 744 /root/start_mysql.sh
-
-#ENTRYPOINT ["/usr/sbin/rcmysql"]
-
+# set the default command
 CMD ["/usr/sbin/rcmysql start; bash"]
